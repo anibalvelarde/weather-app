@@ -1,0 +1,15 @@
+fieldset {
+    display: block;
+    background: greenyellow;
+    border-color: green;
+}
+
+fieldset,
+form {
+    padding: 10px;
+}
+
+.container {
+    width: 600px;
+    margin: 0 auto;
+  }
