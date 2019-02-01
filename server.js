@@ -4,14 +4,14 @@ const express = require('express')
 
 const app = express()
 
-const apiKey = 'your-api-key-goes-here';               // <--- New code
+const apiKey = '*********************************'      // <--- New code
 
 app.use(express.static('public'));    
 app.use(bodyParser.urlencoded({ extended: true }));  
 app.set('view engine', 'ejs')
 
 app.get('/', function (req, res) {
-    res.render('index', {weather: null, error: null})   
+    res.render('index', {weather: null, error: null})   // <--- Gotcha code
 })
 
 app.post('/', function (req, res) {                     // <--- New code
@@ -19,6 +19,7 @@ app.post('/', function (req, res) {                     // <--- New code
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
   
     request(url, function (err, response, body) {
+      console.log(err)
       if(err){
         res.render('index', {weather: null, error: 'Error, please try again'});
       } else {
